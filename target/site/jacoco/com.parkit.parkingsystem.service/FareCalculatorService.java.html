@@ -22,36 +22,31 @@ import java.util.concurrent.TimeUnit;
 <span class="fc" id="L22">        long inTime = ticket.getInTime().getTime();</span>
 <span class="fc" id="L23">        long outTime = ticket.getOutTime().getTime();</span>
 
-<span class="fc" id="L25">        System.out.println(inTime);</span>
-<span class="fc" id="L26">        System.out.println(outTime);</span>
+<span class="fc" id="L25">        long duration = outTime - inTime;</span>
+<span class="fc" id="L26">        float hourDifference = (float)minutes.convert(duration, TimeUnit.MILLISECONDS) / 60;</span>
 
-<span class="fc" id="L28">        long duration = outTime - inTime;</span>
-<span class="fc" id="L29">        float hourDifference = (float)minutes.convert(duration, TimeUnit.MILLISECONDS) / 60;</span>
-
-<span class="fc" id="L31">        System.out.println(hourDifference);</span>
-
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (hourDifference &lt;= 0.5) {</span>
-<span class="nc" id="L34">            ticket.setPrice(0);</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (hourDifference &lt;= 0.5) {</span>
+<span class="nc" id="L29">            ticket.setPrice(0);</span>
         } else {
-<span class="pc bpc" id="L36" title="1 of 3 branches missed.">            switch (ticket.getParkingSpot().getParkingType()) {</span>
+<span class="pc bpc" id="L31" title="1 of 3 branches missed.">            switch (ticket.getParkingSpot().getParkingType()) {</span>
                 case CAR: {
-<span class="fc" id="L38">                    ticket.setPrice(hourDifference * Fare.CAR_RATE_PER_HOUR);</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">                    if(ticketDAO.recurrentUser(ticket)) {</span>
-<span class="fc" id="L40">                        ticket.setPrice((ticket.getPrice() - ((ticket.getPrice() * 5) / 100)));</span>
+<span class="fc" id="L33">                    ticket.setPrice(hourDifference * Fare.CAR_RATE_PER_HOUR);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">                    if(ticketDAO.recurrentUser(ticket)) {</span>
+<span class="fc" id="L35">                        ticket.setPrice((ticket.getPrice() - ((ticket.getPrice() * 5) / 100)));</span>
                     }
                     break;
                 }
                 case BIKE: {
-<span class="fc" id="L45">                    ticket.setPrice(hourDifference * Fare.BIKE_RATE_PER_HOUR);</span>
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">                    if(ticketDAO.recurrentUser(ticket)) {</span>
-<span class="nc" id="L47">                        ticket.setPrice((ticket.getPrice() - ((ticket.getPrice() * 5) / 100)));</span>
+<span class="fc" id="L40">                    ticket.setPrice(hourDifference * Fare.BIKE_RATE_PER_HOUR);</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                    if(ticketDAO.recurrentUser(ticket)) {</span>
+<span class="nc" id="L42">                        ticket.setPrice((ticket.getPrice() - ((ticket.getPrice() * 5) / 100)));</span>
                     }
                     break;
                 }
                 default:
-<span class="nc" id="L52">                    throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
+<span class="nc" id="L47">                    throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
             }
         }
-<span class="fc" id="L55">    }</span>
+<span class="fc" id="L50">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
