@@ -22,27 +22,22 @@ public class FareCalculatorService {
         long inTime = ticket.getInTime().getTime();
         long outTime = ticket.getOutTime().getTime();
 
-        System.out.println(inTime);
-        System.out.println(outTime);
-
         long duration = outTime - inTime;
-        long hourDifference = minutes.convert(duration, TimeUnit.MILLISECONDS) / 60;
-
-        System.out.println(hourDifference);
+        float hourDifference = (float)minutes.convert(duration, TimeUnit.MILLISECONDS) / 60;
 
         if (hourDifference <= 0.5) {
             ticket.setPrice(0);
         } else {
             switch (ticket.getParkingSpot().getParkingType()) {
                 case CAR: {
-                    ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR);
+                    ticket.setPrice(hourDifference * Fare.CAR_RATE_PER_HOUR);
                     if(ticketDAO.recurrentUser(ticket)) {
                         ticket.setPrice((ticket.getPrice() - ((ticket.getPrice() * 5) / 100)));
                     }
                     break;
                 }
                 case BIKE: {
-                    ticket.setPrice(duration * Fare.BIKE_RATE_PER_HOUR);
+                    ticket.setPrice(hourDifference * Fare.BIKE_RATE_PER_HOUR);
                     if(ticketDAO.recurrentUser(ticket)) {
                         ticket.setPrice((ticket.getPrice() - ((ticket.getPrice() * 5) / 100)));
                     }
