@@ -29,14 +29,12 @@ public class ParkingSpotDAOTest {
     @Test
     public void getNextAvailableSlotTest() {
         ParkingType parkingType = ParkingType.CAR;
-        int libre = parkingSpotDAO.getNextAvailableSlot(parkingType);
-        assertEquals(1, libre);
+        assertEquals(1, parkingSpotDAO.getNextAvailableSlot(parkingType));
     }
 
     @Test
     public void updateParkingTest() {
         ParkingSpot parkingSpot = new ParkingSpot(2, ParkingType.CAR, true);
-        boolean prise = parkingSpotDAO.updateParking(parkingSpot);
-        assertTrue(prise);
+        assertTrue(parkingSpotDAO.updateParking(parkingSpot));
     }
 }

@@ -6,21 +6,21 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DataBaseConfigTest {
     private final DataBaseConfig dataBaseConfig = new DataBaseConfig();
     @Test
     public void getConnectionTest() {
         Connection con;
-        boolean succes = false;
+        boolean success = false;
         try {
             con = dataBaseConfig.getConnection();
-            if(con != null){succes = true;}
+            if(con != null){success = true;}
             dataBaseConfig.closeConnection(con);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        assertTrue(succes);
+        assertTrue(success);
     }
 }
