@@ -13,6 +13,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
+import com.parkit.parkingsystem.constants.ParkingType;
+import com.parkit.parkingsystem.dao.TicketDAO;
+import com.parkit.parkingsystem.model.ParkingSpot;
+import com.parkit.parkingsystem.model.Ticket;
 
 public class TicketDAOTest {
 
@@ -21,6 +28,7 @@ public class TicketDAOTest {
     private static TicketDAO ticketDAO;
     private static Ticket ticket;
     private final FareCalculatorService fcs = new FareCalculatorService();
+
 
     @BeforeAll
     private static void setUp() throws Exception {
@@ -52,7 +60,6 @@ public class TicketDAOTest {
 
     @Test
     public void getTicketTest() {
-        ticket = ticketDAO.getTicket("ABCDEF");
-        assertNotNull(ticket);
+        assertNotNull(ticketDAO.getTicket("ABCDEF"));
     }
 }
