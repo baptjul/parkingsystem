@@ -8,12 +8,13 @@ import java.sql.*;
 public class DataBaseConfig {
 
     private static final Logger logger = LogManager.getLogger("DataBaseConfig");
+    private static String dbPass = "ZyBqyEwZ3AVMApMfNC";
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/prod?serverTimezone=UTC","root","ZyBqyEwZ3AVMApMfNC");
+                "jdbc:mysql://localhost:3306/prod?serverTimezone=UTC","root",dbPass);
     }
 
     public void closeConnection(Connection con){

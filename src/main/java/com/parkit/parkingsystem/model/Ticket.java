@@ -44,18 +44,22 @@ public class Ticket {
     }
 
     public Date getInTime() {
-        return inTime;
+        Date timeIn = inTime;
+        return timeIn;
     }
 
     public void setInTime(Date inTime) {
-        this.inTime = inTime;
+        Date timeIn = inTime;
+        this.inTime = timeIn;
     }
 
     public Date getOutTime() {
-        return outTime;
+        Date timeout = outTime;
+        return timeout;
     }
 
     public void setOutTime(Date outTime) {
-        this.outTime = outTime;
+        Date timeout = outTime;
+        this.outTime = timeout;
     }
 }
