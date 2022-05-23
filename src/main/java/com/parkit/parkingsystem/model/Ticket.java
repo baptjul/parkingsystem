@@ -48,9 +48,8 @@ public class Ticket {
         return timeIn;
     }
 
-    public void setInTime(Date inTime) {
-        Date timeIn = inTime;
-        this.inTime = timeIn;
+    public void setInTime(final Date inTime) {
+        this.inTime = inTime == null ? null : (Date) inTime.clone();
     }
 
     public Date getOutTime() {
@@ -58,8 +57,7 @@ public class Ticket {
         return timeout;
     }
 
-    public void setOutTime(Date outTime) {
-        Date timeout = outTime;
-        this.outTime = timeout;
+    public void setOutTime(final Date outTime) {
+        this.outTime = outTime == null ? null : (Date) outTime.clone();
     }
 }

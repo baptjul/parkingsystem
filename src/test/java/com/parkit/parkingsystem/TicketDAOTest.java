@@ -45,7 +45,7 @@ public class TicketDAOTest {
 
     @Test
     public void saveTicketTest() {
-        assertFalse(ticketDAO.saveTicket(ticket));
+        assertTrue(ticketDAO.saveTicket(ticket));
     }
 
     @Test

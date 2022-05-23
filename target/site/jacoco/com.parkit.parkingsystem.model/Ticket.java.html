@@ -48,19 +48,18 @@ import java.util.Date;
 <span class="fc" id="L48">        return timeIn;</span>
     }
 
-    public void setInTime(Date inTime) {
-<span class="fc" id="L52">        Date timeIn = inTime;</span>
-<span class="fc" id="L53">        this.inTime = timeIn;</span>
-<span class="fc" id="L54">    }</span>
+    public void setInTime(final Date inTime) {
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        this.inTime = inTime == null ? null : (Date) inTime.clone();</span>
+<span class="fc" id="L53">    }</span>
 
     public Date getOutTime() {
-<span class="fc" id="L57">        Date timeout = outTime;</span>
-<span class="fc" id="L58">        return timeout;</span>
+<span class="fc" id="L56">        Date timeout = outTime;</span>
+<span class="fc" id="L57">        return timeout;</span>
     }
 
-    public void setOutTime(Date outTime) {
-<span class="fc" id="L62">        Date timeout = outTime;</span>
-<span class="fc" id="L63">        this.outTime = timeout;</span>
-<span class="fc" id="L64">    }</span>
+    public void setOutTime(final Date outTime) {
+        //this.outTime = outTime;
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        this.outTime = outTime == null ? null : (Date) outTime.clone();</span>
+<span class="fc" id="L63">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
